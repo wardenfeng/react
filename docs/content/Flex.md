@@ -60,6 +60,40 @@ _Previously, `Flex.Item` was used for flex item specific properties - we've adde
 </BorderBox>
 ```
 
+## These responsive examples don't work 😢
+
+```jsx live
+<BorderBox width={300} height={300} borderRadius={0}>
+  <Flex flexDirection={['column', 'row']} gap={2}>
+    <Box p={3} bg="blue.5">
+      Item 1
+    </Box>
+    <Box p={3} bg="green.5">
+      Item 2
+    </Box>
+    <Box p={3} bg="yellow.5">
+      Item 3
+    </Box>
+  </Flex>
+</BorderBox>
+```
+
+```jsx live
+<BorderBox width={300} height={300} borderRadius={0}>
+  <Flex flexDirection={['column', 'row']} gap={[2, 3]}>
+    <Box p={3} bg="blue.5">
+      Item 1
+    </Box>
+    <Box p={3} bg="green.5">
+      Item 2
+    </Box>
+    <Box p={3} bg="yellow.5">
+      Item 3
+    </Box>
+  </Flex>
+</BorderBox>
+```
+
 ## System props
 
 Flex components get `FLEX`, `COMMON`, and `LAYOUT` system props.
