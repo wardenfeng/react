@@ -28,7 +28,7 @@ _Previously, `Flex.Item` was used for flex item specific properties - we've adde
 
 ```jsx live
 <BorderBox width={300} height={300} borderRadius={0}>
-  <Flex gap={2}>
+  <Flex gap={[2, 3]}>
     <Box p={3} bg="blue.5">
       Item 1
     </Box>
