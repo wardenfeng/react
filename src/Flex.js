@@ -8,13 +8,16 @@ import theme from './theme'
 const Flex = styled(Box)`
   /* Select any element that immediately follows a direct child of the this flex container */
   > * + * {
-    ${props =>
-      system({
-        gap: {
-          property: props.flexDirection === 'column' ? 'margin-top' : 'margin-left',
-          scale: 'space'
-        }
-      })(props)}
+    ${system({
+      gapX: {
+        property: 'margin-left',
+        scale: 'space'
+      },
+      gapY: {
+        property: 'margin-top',
+        scale: 'space'
+      }
+    })}
   }
 
   ${FLEX};
