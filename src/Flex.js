@@ -1,10 +1,18 @@
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {FLEX} from './constants'
-import theme from './theme'
+import styled from 'styled-components'
 import Box from './Box'
+import {FLEX, get} from './constants'
+import theme from './theme'
 
 const Flex = styled(Box)`
+  /* Select any element that immediately follows a direct child of the this flex container */
+  > * + * {
+    ${props => {
+      const gap = get(`space.${props.gap}`)(props)
+      return props.flexDirection === 'column' ? `margin-top: ${gap}` : `margin-left: ${gap}`
+    }}
+  }
+
   ${FLEX};
 `
 
@@ -17,9 +25,11 @@ Flex.defaultProps = {
   theme,
   display: 'flex'
 }
+
 Flex.Item.defaultProps = {
   theme
 }
+
 Flex.propTypes = {
   ...Box.propTypes,
   ...FLEX.propTypes
