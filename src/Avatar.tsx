@@ -4,13 +4,13 @@ import theme from './theme'
 import sx, {SxProp} from './sx'
 
 interface AvatarProps extends SxProp {
-  size: number
+  size?: number
   square?: boolean
 }
 
 function getBorderRadius(props: AvatarProps) {
   if (props.square) {
-    return props.size <= 24 ? '4px' : '6px'
+    return !props.size || props.size <= 24 ? '4px' : '6px'
   } else {
     return '50%'
   }
