@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import {get, COMMON} from './constants'
 import theme from './theme'
-import sx from './sx'
+import sx, {SxProp} from './sx'
 
-interface AvatarProps {
+interface AvatarProps extends SxProp {
   size?: number
   square?: boolean
 }

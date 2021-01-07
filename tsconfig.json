@@ -1,1 +1,6 @@
-{"compilerOptions": {"jsx": "preserve"}}
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "preserve"
+  }
+}
