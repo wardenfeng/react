@@ -4,7 +4,7 @@ import theme from './theme'
 import sx, {SxProp} from './sx'
 
 interface AvatarProps extends SxProp {
-  size?: number
+  size: number
   square?: boolean
 }
 
