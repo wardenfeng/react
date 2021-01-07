@@ -4,21 +4,24 @@ import resolve from '@rollup/plugin-node-resolve'
 import {terser} from 'rollup-plugin-terser'
 import visualizer from 'rollup-plugin-visualizer'
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+
 const formats = ['esm', 'umd']
+
 const plugins = [
-  babel({exclude: 'node_modules/**', runtimeHelpers: true}),
-  resolve(),
+  babel({extensions, exclude: 'node_modules/**', runtimeHelpers: true}),
+  resolve({extensions}),
   commonjs(),
   terser(),
-  visualizer({sourcemap: true})
+  visualizer({sourcemap: true}),
 ]
 
 export default [
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     external: ['styled-components', 'react', 'react-dom'],
     plugins,
-    output: formats.map(format => ({
+    output: formats.map((format) => ({
       file: `dist/browser.${format}.js`,
       format,
       sourcemap: true,
@@ -26,8 +29,8 @@ export default [
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        'styled-components': 'styled'
-      }
-    }))
-  }
+        'styled-components': 'styled',
+      },
+    })),
+  },
 ]

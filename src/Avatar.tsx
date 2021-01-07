@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {get, COMMON} from './constants'
 import theme from './theme'
 import sx from './sx'
 
-function getBorderRadius(props) {
+interface AvatarProps {
+  size?: number
+  square?: boolean
+}
+
+function getBorderRadius(props: AvatarProps) {
   if (props.square) {
     return props.size <= 24 ? '4px' : '6px'
   } else {
@@ -12,18 +16,18 @@ function getBorderRadius(props) {
   }
 }
 
-const Avatar = styled.img.attrs((props) => ({
+const Avatar = styled.img.attrs<AvatarProps>((props) => ({
   height: props.size,
   width: props.size,
   alt: props.alt,
-}))`
+}))<AvatarProps>`
   display: inline-block;
   overflow: hidden; // Ensure page layout in Firefox should images fail to load
   line-height: ${get('lineHeights.condensedUltra')};
   vertical-align: middle;
   border-radius: ${(props) => getBorderRadius(props)};
   ${COMMON};
-  ${sx}
+  ${sx};
 `
 
 Avatar.defaultProps = {
@@ -31,14 +35,6 @@ Avatar.defaultProps = {
   size: 20,
   alt: '',
   square: false,
-}
-
-Avatar.propTypes = {
-  ...COMMON.propTypes,
-  size: PropTypes.number,
-  square: PropTypes.bool,
-  ...sx.propTypes,
-  theme: PropTypes.object,
 }
 
 export default Avatar
